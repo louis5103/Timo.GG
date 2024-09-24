@@ -36,7 +36,6 @@ public class BasicController {
             String gameName,
             String tagLine
     ) throws Exception {
-        System.err.println(gameName + tagLine);
         ResponseAccountDto dto = basicAPIService.findUserAccount(gameName, tagLine);
         return new ModelAndView(
                 "apiView",
@@ -44,6 +43,6 @@ public class BasicController {
                         "puuid", dto.puuid(),
                         "gameName", dto.gameName(),
                         "tagLine", dto.tagLine())
-        ) ;
+        );
     }
 }
