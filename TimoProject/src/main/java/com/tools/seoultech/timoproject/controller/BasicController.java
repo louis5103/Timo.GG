@@ -31,6 +31,7 @@ public class BasicController {
     public String goMain(){
         return "index";
     }
+
     @GetMapping("requestAPI")
     public ModelAndView requestAPI(
             String gameName,

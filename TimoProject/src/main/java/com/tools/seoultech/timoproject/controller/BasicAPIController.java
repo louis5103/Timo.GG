@@ -4,7 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tools.seoultech.timoproject.dto.APIDataResponse;
 import com.tools.seoultech.timoproject.dto.RequestAccountDto;
 import com.tools.seoultech.timoproject.dto.ResponseAccountDto;
-import com.tools.seoultech.timoproject.exception.GeneralException;
+//import com.tools.seoultech.timoproject.exception.GeneralException;
+//import com.tools.seoultech.timoproject.exception.RiotAPIException;
 import com.tools.seoultech.timoproject.exception.RiotAPIException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,7 @@ public class BasicAPIController {
         HttpResponse<String> httpResponse = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
 
         if(httpResponse.statusCode() == HttpStatus.NOT_FOUND.value()) {
+            System.err.println("API 예외 처리 ");
             throw new RiotAPIException("계정 정보 API 호출 실패");
         }
 

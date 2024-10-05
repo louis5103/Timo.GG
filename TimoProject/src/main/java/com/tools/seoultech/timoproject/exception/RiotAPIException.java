@@ -1,7 +1,9 @@
 package com.tools.seoultech.timoproject.exception;
 
 import com.tools.seoultech.timoproject.constant.ErrorCode;
+import lombok.Getter;
 
+@Getter
 public class RiotAPIException extends RuntimeException {
     private final ErrorCode errorCode;
     public RiotAPIException(){

@@ -1,26 +1,31 @@
 package com.tools.seoultech.timoproject.constant;
 
 
+import com.tools.seoultech.timoproject.exception.GeneralException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 
+import java.util.Arrays;
 import java.util.Optional;
 import java.util.function.Predicate;
 
 @Getter
 @RequiredArgsConstructor
 public enum ErrorCode {
-    OK(0, ErrorCategory.NORMAL, "Ok"),
-    BAD_REQUEST(10000, ErrorCategory.CLIENT_SIDE, "Bad Request"),
-    SPRING_BAD_REQUEST(10001, ErrorCategory.CLIENT_SIDE, "Spring detected Bad Request"),
-    VALIDATION_ERROR(10002, ErrorCategory.CLIENT_SIDE, "Validation error"),
+    OK(0, HttpStatus.OK, "Ok"),
+    BAD_REQUEST(10000, HttpStatus.BAD_REQUEST, "Bad Request"),
+    SPRING_BAD_REQUEST(10001, HttpStatus.BAD_REQUEST, "Spring detected Bad Request"),
+    VALIDATION_ERROR(10002, HttpStatus.BAD_REQUEST, "Validation error"),
 
-    INTERNAL_ERROR(3, ErrorCategory.SERVER_SIDE, "Internal Error"),
-    SPRING_INTERNAL_ERROR(4, ErrorCategory.SERVER_SIDE, "Spring detected Internal Error"),
-    DATA_ACCESS_ERROR(5, ErrorCategory.SERVER_SIDE, "Data Access error"),
-    API_ACCESS_ERROR(6, ErrorCategory.RIOT_API_SERVER, "RIOT API ACCESS error");
+    INTERNAL_ERROR(3, HttpStatus.INTERNAL_SERVER_ERROR, "Internal Error"),
+    SPRING_INTERNAL_ERROR(4,HttpStatus.INTERNAL_SERVER_ERROR, "Spring detected Internal Error"),
+    DATA_ACCESS_ERROR(5, HttpStatus.INTERNAL_SERVER_ERROR, "Data Access error"),
+    API_ACCESS_ERROR(6, HttpStatus.INTERNAL_SERVER_ERROR, "RIOT API ACCESS error");
+
     private final int code;
-    private final ErrorCategory errorCategory;
+    private final HttpStatus httpStatus;
     private final String message;
 
     public String getMessage(Exception e) {
@@ -32,13 +37,22 @@ public enum ErrorCode {
                 .orElse(getMessage());
     }
     public boolean isClientSideError() {
-        return this.getErrorCategory() == ErrorCategory.CLIENT_SIDE;
+        return this.getHttpStatus() == HttpStatus.BAD_REQUEST;
     }
     public boolean isServerSideError() {
-        return this.getErrorCategory() == ErrorCategory.SERVER_SIDE;
+        return this.getHttpStatus() == HttpStatus.INTERNAL_SERVER_ERROR;
     }
+    public static ErrorCode valueOf(HttpStatus httpStatus) {
+        return Arrays.stream(values())
+                .filter(errorCode -> errorCode.getHttpStatus() == httpStatus)
+                .findFirst()
+                .orElseGet( () -> {
+                    if (httpStatus.is4xxClientError()) {
+                        return ErrorCode.BAD_REQUEST;
+                    } else if (httpStatus.is5xxServerError()) {
+                        return ErrorCode.INTERNAL_ERROR;
+                    } else throw new GeneralException("httpStatus is does not matching on server ErrorCode");
+                });
 
-    public enum ErrorCategory {
-        NORMAL, CLIENT_SIDE, SERVER_SIDE, RIOT_API_SERVER
     }
 }
