@@ -29,7 +29,7 @@ public enum ErrorCode {
     private final String message;
 
     public String getMessage(Exception e) {
-        return this.message + e.getMessage();
+        return this.message + " : " + e.getMessage();
     }
     public String getMessage(String message) {
         return Optional.ofNullable(message)

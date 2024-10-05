@@ -2,25 +2,39 @@ package com.tools.seoultech.timoproject.controller.error;
 
 import com.tools.seoultech.timoproject.constant.ErrorCode;
 import com.tools.seoultech.timoproject.dto.APIErrorResponse;
+import com.tools.seoultech.timoproject.exception.GeneralException;
 import com.tools.seoultech.timoproject.exception.RiotAPIException;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@RestControllerAdvice(annotations = RestController.class)
+@RestControllerAdvice
 public class APIExceptionHandler extends ResponseEntityExceptionHandler {
 //    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler
     public ResponseEntity<Object> handleRiotAPIException(RiotAPIException e, WebRequest request) {
 //        return handleExceptionInternal(e, request);
         return getInternalResponseEntity(e, ErrorCode.API_ACCESS_ERROR, request);
+    }
+    @ExceptionHandler
+    public ResponseEntity<Object> handleGeneralException(GeneralException e, WebRequest request) {
+        return getInternalResponseEntity(e, ErrorCode.INTERNAL_ERROR, request);
+    }
+    @ExceptionHandler
+    public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException e, HttpStatus status, WebRequest request) {
+        System.out.println("ConstraintViolationException 발생했음: " + e.getMessage());
+        return getInternalResponseEntity(e, ErrorCode.VALIDATION_ERROR, request);
+    }
+    @ExceptionHandler
+    public ResponseEntity<Object> handException(Exception e, WebRequest request) {
+        return getInternalResponseEntity(e, ErrorCode.INTERNAL_ERROR, request);
     }
 
     @Override

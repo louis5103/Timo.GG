@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
-@ControllerAdvice
+@ControllerAdvice(annotations = ControllerAdvice.class)
 public class ViewExceptionHandler {
     @ExceptionHandler
     public ModelAndView handleException(GeneralException e) {
