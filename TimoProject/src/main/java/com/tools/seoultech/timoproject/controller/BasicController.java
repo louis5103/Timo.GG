@@ -5,10 +5,7 @@ import com.tools.seoultech.timoproject.service.BasicAPIService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
@@ -25,13 +22,13 @@ public class BasicController {
         return "index";
     }
 
-    @GetMapping("requestAPI")
+    @GetMapping("user")
     public ModelAndView requestAPI(
             String gameName, String tagLine
     ) throws Exception {
         AccountDto.Response response_dto = basicAPIService.findUserAccount(AccountDto.Request.of(gameName, tagLine));
         return new ModelAndView(
-                "apiView",
+                "users/" + gameName,
                 Map.of(
                         "puuid", response_dto.getPuuid(),
                         "gameName", response_dto.getGameName(),

@@ -3,6 +3,7 @@ package com.tools.seoultech.timoproject.controller.error;
 import com.tools.seoultech.timoproject.constant.ErrorCode;
 import com.tools.seoultech.timoproject.dto.APIErrorResponse;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,13 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Map;
 
 @Controller
+@Slf4j
 public class BasicErrorController implements ErrorController {
     // View
     @RequestMapping(value = "/error", produces = MediaType.TEXT_HTML_VALUE)
     public ModelAndView View_error(HttpServletResponse response){
         HttpStatus httpStatus = HttpStatus.valueOf(response.getStatus());
         ErrorCode errorCode = ErrorCode.valueOf(httpStatus);
-        System.err.println("View error page 연동");
+        log.info("View error page 연동");
         return new ModelAndView(
                 "error",
                 Map.of(

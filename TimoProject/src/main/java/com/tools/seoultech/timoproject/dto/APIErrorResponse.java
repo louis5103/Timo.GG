@@ -3,9 +3,11 @@ package com.tools.seoultech.timoproject.dto;
 import com.tools.seoultech.timoproject.constant.ErrorCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 @Getter
 @RequiredArgsConstructor
+@ToString
 public class APIErrorResponse {
     private final Boolean success;
     private final Integer errorCode;

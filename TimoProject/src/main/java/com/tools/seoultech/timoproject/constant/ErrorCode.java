@@ -15,6 +15,7 @@ import java.util.function.Predicate;
 @RequiredArgsConstructor
 public enum ErrorCode {
     OK(0, HttpStatus.OK, "Ok"),
+
     BAD_REQUEST(10000, HttpStatus.BAD_REQUEST, "Bad Request"),
     SPRING_BAD_REQUEST(10001, HttpStatus.BAD_REQUEST, "Spring detected Bad Request"),
     VALIDATION_ERROR(10002, HttpStatus.BAD_REQUEST, "Validation error"),
@@ -28,8 +29,8 @@ public enum ErrorCode {
     private final HttpStatus httpStatus;
     private final String message;
 
-    public String getMessage(Exception e) {
-        return this.message + " : " + e.getMessage();
+    public String getMessage(Throwable e) {
+        return this.getMessage(this.message + " : " + e.getMessage());
     }
     public String getMessage(String message) {
         return Optional.ofNullable(message)

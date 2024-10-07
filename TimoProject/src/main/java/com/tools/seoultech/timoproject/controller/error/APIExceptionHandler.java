@@ -4,7 +4,8 @@ import com.tools.seoultech.timoproject.constant.ErrorCode;
 import com.tools.seoultech.timoproject.dto.APIErrorResponse;
 import com.tools.seoultech.timoproject.exception.GeneralException;
 import com.tools.seoultech.timoproject.exception.RiotAPIException;
-import org.hibernate.exception.ConstraintViolationException;
+
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -20,7 +21,6 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
 //    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler
     public ResponseEntity<Object> handleRiotAPIException(RiotAPIException e, WebRequest request) {
-//        return handleExceptionInternal(e, request);
         return getInternalResponseEntity(e, ErrorCode.API_ACCESS_ERROR, request);
     }
     @ExceptionHandler
@@ -28,12 +28,11 @@ public class APIExceptionHandler extends ResponseEntityExceptionHandler {
         return getInternalResponseEntity(e, ErrorCode.INTERNAL_ERROR, request);
     }
     @ExceptionHandler
-    public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException e, HttpStatus status, WebRequest request) {
-        System.out.println("ConstraintViolationException 발생했음: " + e.getMessage());
+    public ResponseEntity<Object> handleConstraintViolationException(ConstraintViolationException e, WebRequest request) {
         return getInternalResponseEntity(e, ErrorCode.VALIDATION_ERROR, request);
     }
     @ExceptionHandler
-    public ResponseEntity<Object> handException(Exception e, WebRequest request) {
+    public ResponseEntity<Object> handleGlobalException(Exception e, WebRequest request) {
         return getInternalResponseEntity(e, ErrorCode.INTERNAL_ERROR, request);
     }
 

@@ -14,4 +14,8 @@ public class RiotAPIException extends RuntimeException {
         super(message);
         this.errorCode = ErrorCode.API_ACCESS_ERROR;
     }
+    public RiotAPIException(String message, ErrorCode errorCode) {
+        super(message);
+        this.errorCode = errorCode;
+    }
 }
