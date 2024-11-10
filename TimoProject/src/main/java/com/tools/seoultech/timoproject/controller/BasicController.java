@@ -1,6 +1,7 @@
 package com.tools.seoultech.timoproject.controller;
 
 import com.tools.seoultech.timoproject.dto.AccountDto;
+import com.tools.seoultech.timoproject.exception.GeneralException;
 import com.tools.seoultech.timoproject.service.BasicAPIService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

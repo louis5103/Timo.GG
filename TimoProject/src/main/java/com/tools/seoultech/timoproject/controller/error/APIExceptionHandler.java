@@ -12,13 +12,13 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@RestControllerAdvice
+@RestControllerAdvice(annotations = RestController.class)
 public class APIExceptionHandler extends ResponseEntityExceptionHandler {
-//    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler
     public ResponseEntity<Object> handleRiotAPIException(RiotAPIException e, WebRequest request) {
         return getInternalResponseEntity(e, ErrorCode.API_ACCESS_ERROR, request);

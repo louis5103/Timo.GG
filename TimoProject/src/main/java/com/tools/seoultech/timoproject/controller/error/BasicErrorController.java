@@ -21,8 +21,9 @@ public class BasicErrorController implements ErrorController {
     @RequestMapping(value = "/error", produces = MediaType.TEXT_HTML_VALUE)
     public ModelAndView View_error(HttpServletResponse response){
         HttpStatus httpStatus = HttpStatus.valueOf(response.getStatus());
+
         ErrorCode errorCode = ErrorCode.valueOf(httpStatus);
-        log.info("View error page 연동");
+        log.info("내부 로직 에러: View error page 연동");
         return new ModelAndView(
                 "error",
                 Map.of(
@@ -36,7 +37,9 @@ public class BasicErrorController implements ErrorController {
     public ResponseEntity<APIErrorResponse> API_error(HttpServletResponse response){
         HttpStatus httpStatus = HttpStatus.valueOf(response.getStatus());
         ErrorCode errorCode = ErrorCode.valueOf(httpStatus);
-
-        return ResponseEntity.status(httpStatus).body(APIErrorResponse.of(false, errorCode, errorCode.getMessage()));
+        log.info("내부로직 에러: API error response 연동");
+        return ResponseEntity
+                .status(httpStatus)
+                .body(APIErrorResponse.of(false, errorCode, errorCode.getMessage()));
     }
 }

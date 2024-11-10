@@ -7,10 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
 
 import java.util.Map;
 
-@ControllerAdvice(annotations = ControllerAdvice.class)
+@ControllerAdvice
 @Slf4j
 public class ViewExceptionHandler {
     @ExceptionHandler
@@ -29,6 +30,7 @@ public class ViewExceptionHandler {
                 "message", errorCode.getMessage()
         ));
     }
+
     @ExceptionHandler
     public ModelAndView handleException(Exception e) {
         ErrorCode errorCode = ErrorCode.INTERNAL_ERROR;

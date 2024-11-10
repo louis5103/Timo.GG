@@ -3,6 +3,7 @@ package com.tools.seoultech.timoproject.dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 
 public class AccountDto {
@@ -25,10 +26,15 @@ public class AccountDto {
 
     @Getter
     public static class Response {
-        @NotBlank @JsonProperty("puuid") private final String puuid;
-        @NotBlank @JsonProperty("gameName") private final String gameName;
-        @NotBlank @JsonProperty("tagLine") private final String tagLine;
+        @JsonProperty("puuid") @NotBlank
+        private final String puuid;
 
+        @JsonProperty("gameName") @NotBlank @Size(min = 3, max = 16)
+        private final String gameName;
+
+        @JsonProperty("tagLine")@NotBlank @Size(min = 3, max = 5)
+        private final String tagLine;
+        
         @JsonCreator
         public Response(@JsonProperty("puuid") String puuid,
                         @JsonProperty("gameName") String gameName,

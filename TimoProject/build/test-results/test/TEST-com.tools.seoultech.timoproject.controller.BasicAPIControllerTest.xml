@@ -1,113 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - [View Controller]</title>
-<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
-<link href="../css/style.css" rel="stylesheet" type="text/css"/>
-<script src="../js/report.js" type="text/javascript"></script>
-</head>
-<body>
-<div id="content">
-<h1>[View Controller]</h1>
-<div class="breadcrumbs">
-<a href="../index.html">all</a> &gt; 
-<a href="../packages/com.tools.seoultech.timoproject.controller.html">com.tools.seoultech.timoproject.controller</a> &gt; BasicControllerTest</div>
-<div id="summary">
-<table>
-<tr>
-<td>
-<div class="summaryGroup">
-<table>
-<tr>
-<td>
-<div class="infoBox" id="tests">
-<div class="counter">3</div>
-<p>tests</p>
-</div>
-</td>
-<td>
-<div class="infoBox" id="failures">
-<div class="counter">0</div>
-<p>failures</p>
-</div>
-</td>
-<td>
-<div class="infoBox" id="ignored">
-<div class="counter">0</div>
-<p>ignored</p>
-</div>
-</td>
-<td>
-<div class="infoBox" id="duration">
-<div class="counter">0.180s</div>
-<p>duration</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</td>
-<td>
-<div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
-<p>successful</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div id="tabs">
-<ul class="tabLinks">
-<li>
-<a href="#tab0">Tests</a>
-</li>
-<li>
-<a href="#tab1">Standard output</a>
-</li>
-</ul>
-<div id="tab0" class="tab">
-<h2>Tests</h2>
-<table>
-<thead>
-<tr>
-<th>Test</th>
-<th>Method name</th>
-<th>Duration</th>
-<th>Result</th>
-</tr>
-</thead>
-<tr>
-<td class="success">[GET] 사용자 페이지 검색 - 정상 검색시 표준 뷰 페이지 전달.</td>
-<td class="success">givenURLAndQueryParams_whenClientGETRequest_thenSendViewPage()</td>
-<td class="success">0.168s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">[GET] 잘못된 헤더 정보 포함 - 잘못된 쿼리 파라미터 전달 시 APIErrorResponse 전달</td>
-<td class="success">givenWrongQuestParams_whenClientGETRequest_thenSendAPIErrorResponse()</td>
-<td class="success">0.002s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">[GET] 잘못된 url 검색 - 잘못된 요청 시 에러 뷰 페이지 전달</td>
-<td class="success">givenWrongURL_whenClientGETRequest_thenSendErrorViewPage()</td>
-<td class="success">0.010s</td>
-<td class="success">passed</td>
-</tr>
-</table>
-</div>
-<div id="tab1" class="tab">
-<h2>Standard output</h2>
-<span class="code">
-<pre>2024-10-08T22:30:02.771+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [BasicControllerTest]: using SpringBootContextLoader
-2024-10-08T22:30:02.772+09:00  INFO 95222 --- [TimoProject] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.tools.seoultech.timoproject.controller.BasicControllerTest]: BasicControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2024-10-08T22:30:02.773+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using ContextCustomizerFactory implementations for test class [BasicControllerTest]: [OverrideAutoConfigurationContextCustomizerFactory, ObservabilityContextCustomizerFactory, TypeExcludeFiltersContextCustomizerFactory, PropertyMappingContextCustomizerFactory, WebDriverContextCustomizerFactory, ImportsContextCustomizerFactory, ExcludeFilterContextCustomizerFactory, HttpGraphQlTesterContextCustomizerFactory, DuplicateJsonObjectContextCustomizerFactory, MockitoContextCustomizerFactory, TestRestTemplateContextCustomizerFactory, WebTestClientContextCustomizerFactory, DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory, MockServerContainerContextCustomizerFactory, DynamicPropertiesContextCustomizerFactory]
-2024-10-08T22:30:02.778+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using ContextCustomizers for test class [BasicControllerTest]: [DisableAutoConfigurationContextCustomizer, DisableObservabilityContextCustomizer, TypeExcludeFiltersContextCustomizer, PropertyMappingContextCustomizer, WebDriverContextCustomizer, ImportsContextCustomizer, ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, DisableReactorResourceFactoryGlobalResourcesContextCustomizerCustomizer]
-2024-10-08T22:30:02.779+09:00  INFO 95222 --- [TimoProject] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.tools.seoultech.timoproject.TimoProjectApplication for test class com.tools.seoultech.timoproject.controller.BasicControllerTest
-2024-10-08T22:30:02.779+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners for test class [BasicControllerTest]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener, ResetMocksTestExecutionListener]
-2024-10-08T22:30:02.790+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .s.b.w.s.c.ApplicationServletEnvironment : Activating profiles []
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="[API Controller]" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-10-08T13:30:02" hostname="louis5103.local" time="0.172">
+  <properties/>
+  <testcase name="[GET] puuid 검색 - 정상 검색 시 표준 APIDataResponse 출력." classname="com.tools.seoultech.timoproject.controller.BasicAPIControllerTest" time="0.155"/>
+  <testcase name="[GET] puuid 검색 - 잘못된 요청 시 표준 APIErrorResponse 출력." classname="com.tools.seoultech.timoproject.controller.BasicAPIControllerTest" time="0.015"/>
+  <system-out><![CDATA[2024-10-08T22:30:02.310+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [BasicAPIControllerTest]: using SpringBootContextLoader
+2024-10-08T22:30:02.311+09:00  INFO 95222 --- [TimoProject] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.tools.seoultech.timoproject.controller.BasicAPIControllerTest]: BasicAPIControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2024-10-08T22:30:02.312+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using ContextCustomizerFactory implementations for test class [BasicAPIControllerTest]: [OverrideAutoConfigurationContextCustomizerFactory, ObservabilityContextCustomizerFactory, TypeExcludeFiltersContextCustomizerFactory, PropertyMappingContextCustomizerFactory, WebDriverContextCustomizerFactory, ImportsContextCustomizerFactory, ExcludeFilterContextCustomizerFactory, HttpGraphQlTesterContextCustomizerFactory, DuplicateJsonObjectContextCustomizerFactory, MockitoContextCustomizerFactory, TestRestTemplateContextCustomizerFactory, WebTestClientContextCustomizerFactory, DisableReactorResourceFactoryGlobalResourcesContextCustomizerFactory, MockServerContainerContextCustomizerFactory, DynamicPropertiesContextCustomizerFactory]
+2024-10-08T22:30:02.324+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using ContextCustomizers for test class [BasicAPIControllerTest]: [DisableAutoConfigurationContextCustomizer, DisableObservabilityContextCustomizer, TypeExcludeFiltersContextCustomizer, PropertyMappingContextCustomizer, WebDriverContextCustomizer, ImportsContextCustomizer, ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, DisableReactorResourceFactoryGlobalResourcesContextCustomizerCustomizer]
+2024-10-08T22:30:02.331+09:00  INFO 95222 --- [TimoProject] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.tools.seoultech.timoproject.TimoProjectApplication for test class com.tools.seoultech.timoproject.controller.BasicAPIControllerTest
+2024-10-08T22:30:02.331+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .b.t.a.w.s.WebMvcTestContextBootstrapper : Using TestExecutionListeners for test class [BasicAPIControllerTest]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener, ResetMocksTestExecutionListener]
+2024-10-08T22:30:02.343+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .s.b.w.s.c.ApplicationServletEnvironment : Activating profiles []
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -118,25 +20,25 @@
 
  :: Spring Boot ::                (v3.3.4)
 
-2024-10-08T22:30:02.793+09:00  INFO 95222 --- [TimoProject] [    Test worker] c.t.s.t.controller.BasicControllerTest   : Starting BasicControllerTest using Java 23 with PID 95222 (started by imsang-u in /Users/imsang-u/Desktop/Timo.GG/TimoProject)
-2024-10-08T22:30:02.793+09:00  INFO 95222 --- [TimoProject] [    Test worker] c.t.s.t.controller.BasicControllerTest   : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-10-08T22:30:02.793+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.boot.SpringApplication               : Loading source class com.tools.seoultech.timoproject.TimoProjectApplication
-2024-10-08T22:30:02.794+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@21e60eed
-2024-10-08T22:30:02.876+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.b.a.AutoConfigurationPackages        : @EnableAutoConfiguration was declared on a class in the package 'com.tools.seoultech.timoproject'. Automatic @Repository and @Entity scanning is enabled.
-2024-10-08T22:30:02.883+09:00  INFO 95222 --- [TimoProject] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
-2024-10-08T22:30:02.889+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 4 mappings in 'requestMappingHandlerMapping'
-2024-10-08T22:30:02.896+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
-2024-10-08T22:30:02.900+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
-2024-10-08T22:30:02.902+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
-2024-10-08T22:30:02.912+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
-2024-10-08T22:30:02.912+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: 
-2024-10-08T22:30:02.912+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] s.b.w.s.f.OrderedCharacterEncodingFilter : Filter 'characterEncodingFilter' configured for use
-2024-10-08T22:30:02.912+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.b.w.s.f.OrderedFormContentFilter     : Filter 'formContentFilter' configured for use
-2024-10-08T22:30:02.912+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.b.w.s.f.OrderedRequestContextFilter  : Filter 'requestContextFilter' configured for use
-2024-10-08T22:30:02.912+09:00  INFO 95222 --- [TimoProject] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2024-10-08T22:30:02.912+09:00  INFO 95222 --- [TimoProject] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2024-10-08T22:30:02.912+09:00  INFO 95222 --- [TimoProject] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
-2024-10-08T22:30:02.916+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .s.b.a.l.ConditionEvaluationReportLogger : 
+2024-10-08T22:30:02.347+09:00  INFO 95222 --- [TimoProject] [    Test worker] c.t.s.t.c.BasicAPIControllerTest         : Starting BasicAPIControllerTest using Java 23 with PID 95222 (started by imsang-u in /Users/imsang-u/Desktop/Timo.GG/TimoProject)
+2024-10-08T22:30:02.347+09:00  INFO 95222 --- [TimoProject] [    Test worker] c.t.s.t.c.BasicAPIControllerTest         : No active profile set, falling back to 1 default profile: "default"
+2024-10-08T22:30:02.347+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.boot.SpringApplication               : Loading source class com.tools.seoultech.timoproject.TimoProjectApplication
+2024-10-08T22:30:02.347+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@1002c49e
+2024-10-08T22:30:02.512+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.b.a.AutoConfigurationPackages        : @EnableAutoConfiguration was declared on a class in the package 'com.tools.seoultech.timoproject'. Automatic @Repository and @Entity scanning is enabled.
+2024-10-08T22:30:02.523+09:00  INFO 95222 --- [TimoProject] [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2024-10-08T22:30:02.531+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2024-10-08T22:30:02.540+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-10-08T22:30:02.546+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-10-08T22:30:02.549+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 2 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-10-08T22:30:02.567+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.b.w.s.ServletContextInitializerBeans : Mapping filters: characterEncodingFilter urls=[/*] order=-2147483648, formContentFilter urls=[/*] order=-9900, requestContextFilter urls=[/*] order=-105
+2024-10-08T22:30:02.568+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.b.w.s.ServletContextInitializerBeans : Mapping servlets: 
+2024-10-08T22:30:02.573+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] s.b.w.s.f.OrderedCharacterEncodingFilter : Filter 'characterEncodingFilter' configured for use
+2024-10-08T22:30:02.573+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.b.w.s.f.OrderedFormContentFilter     : Filter 'formContentFilter' configured for use
+2024-10-08T22:30:02.573+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.b.w.s.f.OrderedRequestContextFilter  : Filter 'requestContextFilter' configured for use
+2024-10-08T22:30:02.573+09:00  INFO 95222 --- [TimoProject] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-10-08T22:30:02.574+09:00  INFO 95222 --- [TimoProject] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-10-08T22:30:02.574+09:00  INFO 95222 --- [TimoProject] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2024-10-08T22:30:02.583+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .s.b.a.l.ConditionEvaluationReportLogger : 
 
 
 ============================
@@ -358,7 +260,7 @@ Negative matches:
 
    ErrorMvcAutoConfiguration.WhitelabelErrorViewConfiguration:
       Did not match:
-         - ErrorTemplate Missing found template from org.springframework.boot.autoconfigure.thymeleaf.ThymeleafTemplateAvailabilityProvider@7e3c5ef1 (ErrorMvcAutoConfiguration.ErrorTemplateMissingCondition)
+         - ErrorTemplate Missing found template from org.springframework.boot.autoconfigure.thymeleaf.ThymeleafTemplateAvailabilityProvider@6edb093f (ErrorMvcAutoConfiguration.ErrorTemplateMissingCondition)
       Matched:
          - @ConditionalOnProperty (server.error.whitelabel.enabled) matched (OnPropertyCondition)
 
@@ -524,21 +426,23 @@ Unconditional classes:
 
 
 
-2024-10-08T22:30:02.921+09:00  INFO 95222 --- [TimoProject] [    Test worker] c.t.s.t.controller.BasicControllerTest   : Started BasicControllerTest in 0.139 seconds (process running for 3.197)
-2024-10-08T22:30:02.926+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.tools.seoultech.timoproject.controller.BasicController#requestAPI(String, String)
-2024-10-08T22:30:02.933+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*' given [*/*]
+2024-10-08T22:30:02.590+09:00  INFO 95222 --- [TimoProject] [    Test worker] c.t.s.t.c.BasicAPIControllerTest         : Started BasicAPIControllerTest in 0.256 seconds (process running for 2.866)
+2024-10-08T22:30:02.648+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.tools.seoultech.timoproject.controller.BasicAPIController#requestAccount(Request)
+2024-10-08T22:30:02.681+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.tools.seoultech.timoproject.dto.AccountDto$Request@5397d41e]
+2024-10-08T22:30:02.721+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-10-08T22:30:02.721+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [APIErrorResponse(success=true, errorCode=0, message=Ok)]
 
 MockHttpServletRequest:
       HTTP Method = GET
-      Request URI = /user
-       Parameters = {gameName=[롤찍먹만할게요], tagLine=[5103]}
-          Headers = []
-             Body = null
+      Request URI = /api/requestAccount
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"53"]
+             Body = {"gameName":"롤찍먹만할게요","tagLine":"5103"}
     Session Attrs = {}
 
 Handler:
-             Type = com.tools.seoultech.timoproject.controller.BasicController
-           Method = com.tools.seoultech.timoproject.controller.BasicController#requestAPI(String, String)
+             Type = com.tools.seoultech.timoproject.controller.BasicAPIController
+           Method = com.tools.seoultech.timoproject.controller.BasicAPIController#requestAccount(Request)
 
 Async:
     Async started = false
@@ -548,14 +452,9 @@ Resolved Exception:
              Type = null
 
 ModelAndView:
-        View name = users/롤찍먹만할게요
+        View name = null
              View = null
-        Attribute = gameName
-            value = 롤찍먹만할게요
-        Attribute = tagLine
-            value = 5103
-        Attribute = puuid
-            value = -O2mxHCCLutqV-VC6FZzTTDDDF-QlfsGlR9qP7Cwb4E7ujIzdRhrtM5ibhPlXshnx3ehrbxD01crbQ
+            Model = null
 
 FlashMap:
        Attributes = null
@@ -563,47 +462,55 @@ FlashMap:
 MockHttpServletResponse:
            Status = 200
     Error message = null
-          Headers = [Content-Language:&quot;en&quot;, Content-Type:&quot;text/html;charset=UTF-8&quot;]
-     Content type = text/html;charset=UTF-8
-             Body = &lt;!DOCTYPE html&gt;
-&lt;html&gt;
-
-&lt;head&gt;
-    &lt;title&gt;Timo.GG&lt;/title&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-    &lt;h1&gt;User View Test Page.&lt;/h1&gt;
-    &lt;ul&gt;
-        &lt;li&gt;puuid: &lt;span&gt;-O2mxHCCLutqV-VC6FZzTTDDDF-QlfsGlR9qP7Cwb4E7ujIzdRhrtM5ibhPlXshnx3ehrbxD01crbQ&lt;/span&gt;&lt;/li&gt;
-        &lt;li&gt;gameName: &lt;span&gt;롤찍먹만할게요&lt;/span&gt;&lt;/li&gt;
-        &lt;li&gt;tagLine: &lt;span&gt;5103&lt;/span&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"success":true,"errorCode":0,"message":"Ok","data":{"puuid":"-O2mxHCCLutqV-VC6FZzTTDDDF-QlfsGlR9qP7Cwb4E7ujIzdRhrtM5ibhPlXshnx3ehrbxD01crbQ","gameName":"롤찍먹만할게요","tagLine":"5103"}}
     Forwarded URL = null
    Redirected URL = null
           Cookies = []
-2024-10-08T22:30:03.098+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
-2024-10-08T22:30:03.099+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.s.r.ResourceHttpRequestHandler     : Resource not found
-2024-10-08T22:30:03.100+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.tools.seoultech.timoproject.controller.error.ViewExceptionHandler#handleException(Exception)
-2024-10-08T22:30:03.100+09:00  INFO 95222 --- [TimoProject] [    Test worker] c.t.s.t.c.error.ViewExceptionHandler     : 익셉션 핸들러에서 예외 처리.
-2024-10-08T22:30:03.100+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource user_error_url.] to ModelAndView [view=&quot;error&quot;; model={errorCode=3, httpStatus=500 INTERNAL_SERVER_ERROR, message=Internal Error}]
-2024-10-08T22:30:03.101+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected 'text/html' given [text/html]
-</pre>
-</span>
-</div>
-</div>
-<div id="footer">
-<p>
-<div>
-<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
-<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
-</label>
-</div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.10.1</a> at 2024. 10. 8. 오후 10:30:04</p>
-</div>
-</div>
-</body>
-</html>
+2024-10-08T22:30:02.757+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.tools.seoultech.timoproject.controller.BasicAPIController#requestAccount(Request)
+2024-10-08T22:30:02.758+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [com.tools.seoultech.timoproject.dto.AccountDto$Request@5eba0cc5]
+2024-10-08T22:30:02.760+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.tools.seoultech.timoproject.controller.error.APIExceptionHandler#handleRiotAPIException(RiotAPIException, WebRequest)
+2024-10-08T22:30:02.763+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2024-10-08T22:30:02.764+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [APIErrorResponse(success=false, errorCode=6, message=RIOT API ACCESS error : 계정 정보 API 호출 실패 - 사용자 정 (truncated)...]
+2024-10-08T22:30:02.764+09:00 DEBUG 95222 --- [TimoProject] [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.tools.seoultech.timoproject.exception.RiotAPIException: 계정 정보 API 호출 실패 - 사용자 정보가 없습니다.]
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/requestAccount
+       Parameters = {}
+          Headers = [Content-Type:"application/json;charset=UTF-8", Content-Length:"57"]
+             Body = {"gameName":"test_wrong_id@$","tagLine":"test_wrong_tag"}
+    Session Attrs = {}
+
+Handler:
+             Type = com.tools.seoultech.timoproject.controller.BasicAPIController
+           Method = com.tools.seoultech.timoproject.controller.BasicAPIController#requestAccount(Request)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = com.tools.seoultech.timoproject.exception.RiotAPIException
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 500
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"success":false,"errorCode":6,"message":"RIOT API ACCESS error : 계정 정보 API 호출 실패 - 사용자 정보가 없습니다."}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

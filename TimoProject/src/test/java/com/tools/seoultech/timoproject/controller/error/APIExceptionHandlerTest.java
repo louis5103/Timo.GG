@@ -2,6 +2,7 @@ package com.tools.seoultech.timoproject.controller.error;
 
 import com.tools.seoultech.timoproject.constant.ErrorCode;
 import com.tools.seoultech.timoproject.dto.APIErrorResponse;
+import com.tools.seoultech.timoproject.dto.AccountDto;
 import com.tools.seoultech.timoproject.exception.RiotAPIException;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.BeforeEach;
@@ -57,18 +58,21 @@ class APIExceptionHandlerTest {
     @Test
     void givenRiotAPIException_whenHandlingAPIException_thenReturnResponseEntity() {
         //given
-        RiotAPIException e = new RiotAPIException();
+        RiotAPIException e = new RiotAPIException("test");
         ErrorCode errorCode = ErrorCode.API_ACCESS_ERROR;
 
         //when
         ResponseEntity<Object> response = handler.handleRiotAPIException(e, request);
+        System.err.println(response);
 
         //then
         assertThat(response)
                 .hasFieldOrPropertyWithValue("headers", HttpHeaders.EMPTY)
                 .hasFieldOrPropertyWithValue("statusCode", HttpStatus.INTERNAL_SERVER_ERROR)
+//                .hasFieldOrPropertyWithValue("body", APIErrorResponse.of(false, ErrorCode.API_ACCESS_ERROR, e.getMessage()));
                 .satisfies( resp -> {
-                    assertThat(resp.getBody().toString()).isEqualTo(errorCode.getCode());
+                    assertThat(resp.getBody().toString())
+                            .isEqualTo(APIErrorResponse.of(false, errorCode.getCode(), errorCode.getMessage(e)).toString());
                 });
     }
 }

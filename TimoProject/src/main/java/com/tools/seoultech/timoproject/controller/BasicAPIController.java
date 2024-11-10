@@ -1,6 +1,5 @@
 package com.tools.seoultech.timoproject.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tools.seoultech.timoproject.dto.APIDataResponse;
 import com.tools.seoultech.timoproject.dto.AccountDto;
 
@@ -20,7 +19,9 @@ public class BasicAPIController {
     private final BasicAPIService bas;
 
     @GetMapping("/requestAccount")
-    public ResponseEntity<APIDataResponse<AccountDto.Response>> requestAccount(@Validated @RequestBody AccountDto.Request dto) throws RiotAPIException, Exception{
+    public ResponseEntity<APIDataResponse<AccountDto.Response>> requestAccount(
+            @Validated @RequestBody AccountDto.Request dto) throws RiotAPIException, Exception
+    {
         AccountDto.Response response_dto = bas.findUserAccount(dto);
         return ResponseEntity.status(HttpStatus.OK).body(APIDataResponse.of(response_dto));
     }

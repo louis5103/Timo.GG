@@ -72,7 +72,8 @@ class BasicAPIControllerTest {
         String gameName = "test_wrong_id@$";
         String tagLine = "test_wrong_tag";
         AccountDto.Request request_dto = AccountDto.Request.of(gameName, tagLine);
-        given(bas.findUserAccount(any())).willThrow(new RiotAPIException("계정 정보 API 호출 실패 - 사용자 정보가 없습니다.", ErrorCode.API_ACCESS_ERROR));
+        given(bas.findUserAccount(any()))
+                .willThrow(new RiotAPIException("계정 정보 API 호출 실패 - 사용자 정보가 없습니다.", ErrorCode.API_ACCESS_ERROR));
 
         // when & then
         mvc.perform(
@@ -88,3 +89,4 @@ class BasicAPIControllerTest {
         then(bas).should().findUserAccount(any());
     }
 }
+
