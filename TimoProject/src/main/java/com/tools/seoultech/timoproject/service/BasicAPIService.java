@@ -1,6 +1,7 @@
 package com.tools.seoultech.timoproject.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.JsonPath;
 import com.tools.seoultech.timoproject.constant.ErrorCode;
 import com.tools.seoultech.timoproject.dto.AccountDto;
 import com.tools.seoultech.timoproject.exception.RiotAPIException;
@@ -57,6 +58,21 @@ public class BasicAPIService {
             log.info("riot API 예외 처리 - API_KEY가 유효하지 않습니다.");
             throw new RiotAPIException("유효하지 않은 API_KEY", ErrorCode.API_ACCESS_ERROR);
         }
+    }
+
+    public void requestMatchInfo(String matchid) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        sb.append("https://asia.api.riotgames.com/lol/match/v5/matches/")
+                .append(matchid).append("/")
+                .append("?api_key=").append(api_key);
+        request = HttpRequest.newBuilder()
+                .uri(URI.create(sb.toString()))
+                .GET()
+                .build();
+        response = httpClient.send(
+                request,
+                HttpResponse.BodyHandlers.ofString());
+
     }
 }
 

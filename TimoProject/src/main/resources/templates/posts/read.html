@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/posts/community_all :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+
+        <div class="post">
+            <div class="post_head">
+                <p><b>자유 게시판</b> | 잡담</p>
+                <h3 th:text="${dto.title}"></h3>
+                <img src="../static/posts/ID.png" alt="" />
+            </div>
+            <hr />
+            <textarea class="post-content" th:value="${dto.content}" readonly>[[${dto.content}]]</textarea>
+            <hr />
+            <div class="post_foot">
+                <button>좋아요</button>
+                <button>공유?</button>
+            </div>
+        </div>
+        <div class="chat"></div>
+    </th:block>
+</th:block>
+</html>
