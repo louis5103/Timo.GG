@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 import com.tools.seoultech.timoproject.constant.ErrorCode;
 import com.tools.seoultech.timoproject.dto.AccountDto;
+import com.tools.seoultech.timoproject.dto.MatchInfoDTO;
 import com.tools.seoultech.timoproject.exception.RiotAPIException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -60,19 +61,22 @@ public class BasicAPIService {
         }
     }
 
-    public void requestMatchInfo(String matchid) throws Exception {
+    public MatchInfoDTO requestMatchInfo(String matchid) throws Exception {
         StringBuilder sb = new StringBuilder();
         sb.append("https://asia.api.riotgames.com/lol/match/v5/matches/")
-                .append(matchid).append("/")
-                .append("?api_key=").append(api_key);
+                .append(matchid);
+
         request = HttpRequest.newBuilder()
                 .uri(URI.create(sb.toString()))
+                .header("X-Riot-Token","RGAPI-1f999d87-b868-47c8-844f-725abf9cdbb4")
                 .GET()
                 .build();
         response = httpClient.send(
                 request,
                 HttpResponse.BodyHandlers.ofString());
 
+        System.err.println("Service: "+ response);
+        return MatchInfoDTO.of(response.body());
     }
 }
 
