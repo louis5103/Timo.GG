@@ -2,8 +2,10 @@ package com.tools.seoultech.timoproject.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
+import com.sun.jna.platform.win32.Netapi32Util;
 import com.tools.seoultech.timoproject.constant.ErrorCode;
 import com.tools.seoultech.timoproject.dto.AccountDto;
+import com.tools.seoultech.timoproject.dto.Detail_MatchInfoDTO;
 import com.tools.seoultech.timoproject.dto.MatchInfoDTO;
 import com.tools.seoultech.timoproject.exception.RiotAPIException;
 import jakarta.transaction.Transactional;
@@ -13,11 +15,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 
 @Service
 @Validated
@@ -29,6 +35,7 @@ public class BasicAPIService {
     private HttpResponse<String> response;
 
     @Value("${api_key}") private String api_key;
+    @Value("${my_puuid}") private String my_puuid;
 
     @Transactional
     public AccountDto.Response findUserAccount(@Valid AccountDto.Request dto) throws Exception {
@@ -61,14 +68,14 @@ public class BasicAPIService {
         }
     }
 
-    public MatchInfoDTO requestMatchInfo(String matchid) throws Exception {
+    public Detail_MatchInfoDTO requestMatchInfo(String matchid) throws Exception {
         StringBuilder sb = new StringBuilder();
         sb.append("https://asia.api.riotgames.com/lol/match/v5/matches/")
                 .append(matchid);
 
         request = HttpRequest.newBuilder()
                 .uri(URI.create(sb.toString()))
-                .header("X-Riot-Token","RGAPI-1f999d87-b868-47c8-844f-725abf9cdbb4")
+                .header("X-Riot-Token", api_key)
                 .GET()
                 .build();
         response = httpClient.send(
@@ -76,7 +83,45 @@ public class BasicAPIService {
                 HttpResponse.BodyHandlers.ofString());
 
         System.err.println("Service: "+ response);
-        return MatchInfoDTO.of(response.body());
+        MatchInfoDTO matchInfoDTO = MatchInfoDTO.of(response.body());
+        log.info("BasicAPIService: Completed MatchInfoDTO request");
+        Detail_MatchInfoDTO detail_matchInfoDTO = Detail_MatchInfoDTO.of(matchInfoDTO, my_puuid, requestRuneData());
+        log.info("BasicAPIService: Completed Detail_MatchInfoDTO request");
+        return detail_matchInfoDTO;
+    }
+
+    private String requestRuneData() throws Exception{
+        request = HttpRequest.newBuilder()
+                .uri(URI.create("https://ddragon.leagueoflegends.com/cdn/14.23.1/data/en_US/runesReforged.json"))
+                .GET()
+                .build();
+        response = httpClient.send(
+                request,
+                HttpResponse.BodyHandlers.ofString());
+        log.info("BasicAPIService: Completed RuneData request");
+        return response.body();
+    }
+    public List<String> requestMatchList(String puuid) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        sb.append("https://asia.api.riotgames.com/lol/match/v5/matches/by-puuid/")
+                .append(puuid)
+                .append("/ids");
+
+        request = HttpRequest.newBuilder()
+                .uri(URI.create(sb.toString()))
+                .uri(UriComponentsBuilder.fromUriString(sb.toString())
+                        .queryParam("start",0)
+                        .queryParam("count", 20)
+                        .queryParam("api_key", api_key)
+                        .build().toUri())
+                .GET()
+                .build();
+
+        response = httpClient.send(
+                request,
+                HttpResponse.BodyHandlers.ofString());
+        log.info("BasicAPIService: Completed MatchList request");
+        return mapper.readValue(response.body(), List.class);
     }
 }
 
