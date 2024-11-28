@@ -1,17 +1,13 @@
 package com.tools.seoultech.timoproject.dto;
 
-import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
-import com.jayway.jsonpath.TypeRef;
-import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
 import com.tools.seoultech.timoproject.constant.DDragonSpellCode;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
 import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 
 import java.util.List;
 import java.util.stream.Collectors;
