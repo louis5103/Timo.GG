@@ -11,7 +11,7 @@ import org.springframework.web.servlet.mvc.Controller;
 
 import java.util.Map;
 
-@ControllerAdvice
+//@ControllerAdvice
 @Slf4j
 public class ViewExceptionHandler {
     @ExceptionHandler
@@ -21,7 +21,7 @@ public class ViewExceptionHandler {
                 HttpStatus.BAD_REQUEST :
                 HttpStatus.INTERNAL_SERVER_ERROR;
 
-        log.info("익셉션 핸들러에서 예외처리");
+        log.info("ViewExceptionHandler: 익셉션 핸들러에서 예외처리");
         return new ModelAndView(
                 "error",
                 Map.of(
@@ -35,7 +35,7 @@ public class ViewExceptionHandler {
     public ModelAndView handleException(Exception e) {
         ErrorCode errorCode = ErrorCode.INTERNAL_ERROR;
         HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-        log.info("익셉션 핸들러에서 예외 처리.");
+        log.info("ViewExceptionHandler: 익셉션 핸들러에서 예외 처리.");
         return new ModelAndView(
                 "error",
                 Map.of(

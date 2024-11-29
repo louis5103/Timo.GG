@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
-@Controller
+//@Controller
 @Slf4j
 public class BasicErrorController implements ErrorController {
     // View
@@ -23,7 +23,7 @@ public class BasicErrorController implements ErrorController {
         HttpStatus httpStatus = HttpStatus.valueOf(response.getStatus());
 
         ErrorCode errorCode = ErrorCode.valueOf(httpStatus);
-        log.info("내부 로직 에러: View error page 연동");
+        log.info("ErrorControler 내부 로직 에러: View error page 연동");
         return new ModelAndView(
                 "error",
                 Map.of(
@@ -37,7 +37,7 @@ public class BasicErrorController implements ErrorController {
     public ResponseEntity<APIErrorResponse> API_error(HttpServletResponse response){
         HttpStatus httpStatus = HttpStatus.valueOf(response.getStatus());
         ErrorCode errorCode = ErrorCode.valueOf(httpStatus);
-        log.info("내부로직 에러: API error response 연동");
+        log.info("ErrorController 내부로직 에러: API error response 연동");
         return ResponseEntity
                 .status(httpStatus)
                 .body(APIErrorResponse.of(false, errorCode, errorCode.getMessage()));

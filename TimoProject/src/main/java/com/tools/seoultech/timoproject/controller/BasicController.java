@@ -49,7 +49,6 @@ public class BasicController {
 //            String puuid,
             Model model
     ) throws Exception {
-        log.info("BasicController: Enter" + "puuid");
         String puuid = basicAPIService.findUserAccount(AccountDto.Request.of("롤찍먹만할게요","5103")).getPuuid();
         List<String> matchList = basicAPIService.requestMatchList(puuid);
         List<Detail_MatchInfoDTO> dtoList = new ArrayList<>();

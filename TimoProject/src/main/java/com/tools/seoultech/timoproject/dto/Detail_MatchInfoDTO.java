@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
+import lombok.extern.log4j.Log4j2;
 import net.minidev.json.JSONArray;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 @Getter
 @Builder
 @ToString
+@Log4j2
 @RequiredArgsConstructor
 public class Detail_MatchInfoDTO {
     private final String icon;
@@ -67,6 +69,7 @@ public class Detail_MatchInfoDTO {
                 .items(itemURL)
                 .participants(participants)
                 .build();
+        log.info("Detail_MatchInfoDTO created");
         return var;
     }
 }

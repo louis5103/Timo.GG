@@ -11,12 +11,14 @@ import com.tools.seoultech.timoproject.exception.RiotAPIException;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.extern.jackson.Jacksonized;
+import lombok.extern.log4j.Log4j2;
 import net.minidev.json.JSONObject;
 
 import java.util.List;
 
 @Getter
 @Builder
+@Log4j2
 @RequiredArgsConstructor
 public class MatchInfoDTO {
     private final List<String> participants;
@@ -119,6 +121,7 @@ public class MatchInfoDTO {
                         "'item0', 'item1', 'item2', 'item3', 'item4', 'item5', 'item6', " +
                         "'perks', 'teamId', 'win']", typeRef)
         );
+        log.info("BasicAPIService: Completed MatchInfoDTO request");
         return testDTO;
     }
 
