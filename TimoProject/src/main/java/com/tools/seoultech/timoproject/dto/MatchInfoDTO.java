@@ -14,6 +14,7 @@ import lombok.extern.jackson.Jacksonized;
 import net.minidev.json.JSONObject;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Builder
@@ -89,6 +90,9 @@ public class MatchInfoDTO {
             this.summoner1Id = summoner1Id;
             this.summoner2Id = summoner2Id;
             this.Items = List.of(item0, item1, item2, item3, item4, item5, item6);
+//                    .stream()
+//                    .filter(item -> item > 0)
+//                    .collect(Collectors.toList());
 
             DocumentContext node = JsonPath.parse(perks);
             Integer mainRune = node.read("$.styles[0].selections[0].perk");

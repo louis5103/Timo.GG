@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,15 +31,20 @@ public class BasicAPIController {
         AccountDto.Response response_dto = bas.findUserAccount(dto);
         return ResponseEntity.status(HttpStatus.OK).body(APIDataResponse.of(response_dto));
     }
-    @GetMapping("/request/MatchV5/matches/{matchid}")
-    public ResponseEntity<APIDataResponse<Detail_MatchInfoDTO>> requestMatchInfo(
-            @PathVariable String matchid,
+    @GetMapping("/request/MatchV5/matches/전적검색")
+    public ResponseEntity<APIDataResponse<List<Detail_MatchInfoDTO>>> requestMatchInfo(
+//            @PathVariable String matchid,
             Model model
     ) throws Exception{
-        System.err.println("Controller: "+matchid);
-        Detail_MatchInfoDTO match_dto = bas.requestMatchInfo(matchid);
-        model.addAttribute("match_dto", match_dto);
-        return ResponseEntity.status(HttpStatus.OK).body(APIDataResponse.of(match_dto));
+        String puuid = bas.findUserAccount(AccountDto.Request.of("롤찍먹만할게요","5103")).getPuuid();
+        List<String> matchList = bas.requestMatchList(puuid);
+        List<Detail_MatchInfoDTO> dto_List = new ArrayList<>();
+        for(String match : matchList){
+            Detail_MatchInfoDTO match_dto = bas.requestMatchInfo(match);
+            dto_List.add(match_dto);
+        }
+        model.addAttribute("match_dto", dto_List);
+        return ResponseEntity.status(HttpStatus.OK).body(APIDataResponse.of(dto_List));
     }
     @GetMapping("/request/MatchV5/matches/by-puuid/{puuid}")
     public ResponseEntity<APIDataResponse<List<String>>> requestMatchList(

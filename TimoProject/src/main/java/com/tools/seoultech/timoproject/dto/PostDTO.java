@@ -18,3 +18,4 @@ public class PostDTO {
     private String writer;
     private LocalDateTime regDate, modDate;
 }
+

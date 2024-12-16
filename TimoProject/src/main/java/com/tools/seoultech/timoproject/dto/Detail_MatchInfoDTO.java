@@ -44,7 +44,7 @@ public class Detail_MatchInfoDTO {
         List<String> itemURL = myInfo.getItems().stream()
                 .map(id -> (id>0) ? String.format("https://ddragon.leagueoflegends.com/cdn/14.23.1/img/item/%d.png", id) : null)
                 .collect(Collectors.toList());
-        String spell1URL = String.format("https://ddragon.leagueoflegends.com/cdn/14.23.1/img/spell/%s",
+        String spell1URL = String.format("https://ddragon.leagueoflegends.com/cdn/14.23.1/img/spell/%s.png",
                 DDragonSpellCode.of(myInfo.getSummoner1Id()));
         String spell2URL = String.format("https://ddragon.leagueoflegends.com/cdn/14.23.1/img/spell/%s.png",
                 DDragonSpellCode.of(myInfo.getSummoner2Id()));
@@ -65,6 +65,7 @@ public class Detail_MatchInfoDTO {
                 .rune3(mainRuneURL)
                 .rune4(subRuneURL)
                 .items(itemURL)
+                .totalMinionskilled(myInfo.getTotalMinionsKilled())
                 .participants(participants)
                 .build();
         return var;
