@@ -47,10 +47,11 @@ public class BasicController {
     @GetMapping("전적검색")
     public String showMatchList(
 //            String puuid,
+            String gameName, String tagLine,
             Model model
     ) throws Exception {
         log.info("BasicController: Enter" + "puuid");
-        String puuid = basicAPIService.findUserAccount(AccountDto.Request.of("롤찍먹만할게요","5103")).getPuuid();
+        String puuid = basicAPIService.findUserAccount(AccountDto.Request.of(gameName,tagLine)).getPuuid();
         List<String> matchList = basicAPIService.requestMatchList(puuid);
         List<Detail_MatchInfoDTO> dtoList = new ArrayList<>();
         for(String match : matchList){

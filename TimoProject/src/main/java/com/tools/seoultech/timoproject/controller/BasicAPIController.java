@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
@@ -34,15 +36,27 @@ public class BasicAPIController {
     @GetMapping("/request/MatchV5/matches/전적검색")
     public ResponseEntity<APIDataResponse<List<Detail_MatchInfoDTO>>> requestMatchInfo(
 //            @PathVariable String matchid,
+            @RequestParam String name,
+            @RequestParam String tag,
             Model model
     ) throws Exception{
-        String puuid = bas.findUserAccount(AccountDto.Request.of("롤찍먹만할게요","5103")).getPuuid();
+        String puuid = bas.findUserAccount(AccountDto.Request.of(name,tag)).getPuuid();
         List<String> matchList = bas.requestMatchList(puuid);
         List<Detail_MatchInfoDTO> dto_List = new ArrayList<>();
-        for(String match : matchList){
-            Detail_MatchInfoDTO match_dto = bas.requestMatchInfo(match);
-            dto_List.add(match_dto);
-        }
+//        for(String match : matchList){
+//            Detail_MatchInfoDTO match_dto = bas.requestMatchInfo(match);
+//            dto_List.add(match_dto);
+//        }
+        matchList.parallelStream()
+                        .forEach( matchId -> {
+                               try{
+                                   Detail_MatchInfoDTO dto_detail = bas.requestMatchInfo(matchId);
+                                   dto_List.add(dto_detail);
+                               }
+                               catch(Exception e){
+                                   throw new RiotAPIException("Detail_matchInfo(matchId)중 오류 발생.");
+                               }
+                        });
         model.addAttribute("match_dto", dto_List);
         return ResponseEntity.status(HttpStatus.OK).body(APIDataResponse.of(dto_List));
     }

@@ -25,6 +25,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 @Service
 @Validated
 @Slf4j
@@ -81,9 +83,10 @@ public class BasicAPIService {
         response = httpClient.send(
                 request,
                 HttpResponse.BodyHandlers.ofString());
-
+        sleep(1001);
         System.err.println("Service: "+ response);
         MatchInfoDTO matchInfoDTO = MatchInfoDTO.of(response.body());
+        
         log.info("BasicAPIService: Completed MatchInfoDTO request");
         Detail_MatchInfoDTO detail_matchInfoDTO = Detail_MatchInfoDTO.of(matchInfoDTO, my_puuid, requestRuneData());
         log.info("BasicAPIService: Completed Detail_MatchInfoDTO request");
