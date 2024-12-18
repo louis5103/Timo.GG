@@ -54,7 +54,6 @@ public class BasicAPIService {
         response = httpClient.send(
                 request,
                 HttpResponse.BodyHandlers.ofString());
-
         riotAPI_validation(response);
         return mapper.readValue(response.body(), AccountDto.Response.class);
     }
@@ -70,7 +69,7 @@ public class BasicAPIService {
         }
     }
 
-    public Detail_MatchInfoDTO requestMatchInfo(String matchid) throws Exception {
+    public Detail_MatchInfoDTO requestMatchInfo(String matchid, String requestRuneDataString) throws Exception {
         StringBuilder sb = new StringBuilder();
         sb.append("https://asia.api.riotgames.com/lol/match/v5/matches/")
                 .append(matchid);
@@ -80,20 +79,21 @@ public class BasicAPIService {
                 .header("X-Riot-Token", api_key)
                 .GET()
                 .build();
+//        sleep(1500);
         response = httpClient.send(
                 request,
                 HttpResponse.BodyHandlers.ofString());
-        sleep(1001);
+
         System.err.println("Service: "+ response);
         MatchInfoDTO matchInfoDTO = MatchInfoDTO.of(response.body());
-        
+
         log.info("BasicAPIService: Completed MatchInfoDTO request");
-        Detail_MatchInfoDTO detail_matchInfoDTO = Detail_MatchInfoDTO.of(matchInfoDTO, my_puuid, requestRuneData());
+        Detail_MatchInfoDTO detail_matchInfoDTO = Detail_MatchInfoDTO.of(matchInfoDTO, my_puuid, requestRuneDataString);
         log.info("BasicAPIService: Completed Detail_MatchInfoDTO request");
         return detail_matchInfoDTO;
     }
 
-    private String requestRuneData() throws Exception{
+    public String requestRuneData() throws Exception{
         request = HttpRequest.newBuilder()
                 .uri(URI.create("https://ddragon.leagueoflegends.com/cdn/14.23.1/data/en_US/runesReforged.json"))
                 .GET()
@@ -119,7 +119,6 @@ public class BasicAPIService {
                         .build().toUri())
                 .GET()
                 .build();
-
         response = httpClient.send(
                 request,
                 HttpResponse.BodyHandlers.ofString());

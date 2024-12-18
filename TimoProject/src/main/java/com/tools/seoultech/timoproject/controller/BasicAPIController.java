@@ -16,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
@@ -42,15 +43,16 @@ public class BasicAPIController {
     ) throws Exception{
         String puuid = bas.findUserAccount(AccountDto.Request.of(name,tag)).getPuuid();
         List<String> matchList = bas.requestMatchList(puuid);
-        List<Detail_MatchInfoDTO> dto_List = new ArrayList<>();
+        List<Detail_MatchInfoDTO> dto_List = Collections.synchronizedList(new ArrayList<>());
 //        for(String match : matchList){
 //            Detail_MatchInfoDTO match_dto = bas.requestMatchInfo(match);
 //            dto_List.add(match_dto);
 //        }
-        matchList.parallelStream()
-                        .forEach( matchId -> {
+        String subString = bas.requestRuneData();
+        matchList.stream().parallel()
+                        .forEachOrdered( matchId -> {
                                try{
-                                   Detail_MatchInfoDTO dto_detail = bas.requestMatchInfo(matchId);
+                                   Detail_MatchInfoDTO dto_detail = bas.requestMatchInfo(matchId, subString);
                                    dto_List.add(dto_detail);
                                }
                                catch(Exception e){
