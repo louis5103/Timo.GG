@@ -63,7 +63,7 @@ public class BasicController {
         matchList.parallelStream()
                 .forEachOrdered( matchId -> {
                     try{
-                        Detail_MatchInfoDTO dto_detail = basicAPIService.requestMatchInfo(matchId, subString);
+                        Detail_MatchInfoDTO dto_detail = basicAPIService.requestMatchInfo(matchId, puuid, subString);
                         dtoList.add(dto_detail);
                     }
                     catch(Exception e){
@@ -71,6 +71,7 @@ public class BasicController {
                     }
                 });
         model.addAttribute("matchList", dtoList);
+        model.addAttribute("userInfo", List.of(gameName, tagLine));
 
 //        return ResponseEntity.status(HttpStatus.OK).body(APIDataResponse.of(dtoList));
         return "matches";

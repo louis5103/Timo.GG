@@ -13,6 +13,8 @@ import lombok.*;
 import lombok.extern.jackson.Jacksonized;
 import net.minidev.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +26,8 @@ public class MatchInfoDTO {
     private final Integer queueId;
     private final String gameMode;
     private final Long gameDuration;
+    private final Long gameEndTimestamp;
+
     private final List<UserInfo> userInfo;
 //    @com.fasterxml.jackson.databind.annotation.JsonDeserialize(builder = UserInfo.UserInfoBuilder.class)
     @Getter
@@ -40,6 +44,7 @@ public class MatchInfoDTO {
         private final Integer deaths;
         private final Integer assists;
 
+        private final String multiKill;
         private final Integer totalMinionsKilled;
         private final Integer summoner1Id;
         private final Integer summoner2Id;
@@ -75,7 +80,12 @@ public class MatchInfoDTO {
                 @JsonProperty("item6") Integer item6,
                 @JsonProperty("perks") JSONObject perks,
                 @JsonProperty("teamId") Integer teamId,
-                @JsonProperty("win") Boolean win) {
+                @JsonProperty("win") Boolean win,
+                @JsonProperty("doubleKills") Integer doubleKillB,
+                @JsonProperty("tripleKills") Integer tripleKillB,
+                @JsonProperty("quadraKills") Integer quadraKillB,
+                @JsonProperty("pentaKills") Integer pentaKills
+        ) {
 
             this.puuid = puuid;
             this.riotIdGameName = riotIdGameName;
@@ -85,6 +95,13 @@ public class MatchInfoDTO {
             this.kills = kills;
             this.deaths = deaths;
             this.assists = assists;
+
+
+            if(pentaKills>0) this.multiKill="펜타킬";
+            else if(quadraKillB>0) this.multiKill="쿼드라킬";
+            else if(tripleKillB>0) this.multiKill="트리플킬";
+            else if(doubleKillB>0) this.multiKill="더블킬";
+            else this.multiKill=null;
 
             this.totalMinionsKilled = totalMinionsKilled;
             this.summoner1Id = summoner1Id;
@@ -117,11 +134,11 @@ public class MatchInfoDTO {
                 node.read("$.info.queueId"),
                 node.read("$.info.gameMode"),
                 node.read("$.info.gameDuration", Long.class),
-
-                node.read("$.info.participants.*['puuid', 'riotIdGameName', 'riotIdTagline', 'championName'," +
+                node.read("$.info.gameEndTimestamp", Long.class),
+                node.read("$.info.participants.*['puuid',  'riotIdGameName', 'riotIdTagline', 'championName'," +
                         " 'kills', 'deaths', 'assists', 'totalMinionsKilled', 'summoner1Id', 'summoner2Id', " +
                         "'item0', 'item1', 'item2', 'item3', 'item4', 'item5', 'item6', " +
-                        "'perks', 'teamId', 'win']", typeRef)
+                        "'doubleKills', 'tripleKills','quadraKills', 'pentaKills','perks', 'teamId', 'win']", typeRef)
         );
         return testDTO;
     }

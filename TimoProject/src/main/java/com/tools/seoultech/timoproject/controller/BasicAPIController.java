@@ -34,6 +34,23 @@ public class BasicAPIController {
         AccountDto.Response response_dto = bas.findUserAccount(dto);
         return ResponseEntity.status(HttpStatus.OK).body(APIDataResponse.of(response_dto));
     }
+    @GetMapping("/request/MatchV5/matches/matchInfoDTO")
+    public ResponseEntity<APIDataResponse<List<MatchInfoDTO>>> requestMatchV5(
+            String name,
+            String tag
+    )throws RiotAPIException, Exception{
+        String puuid = bas.findUserAccount(AccountDto.Request.of(name, tag)).getPuuid();
+        List<String> matchList = bas.requestMatchList(puuid);
+        List<MatchInfoDTO> dto_List = Collections.synchronizedList(new ArrayList<>());
+        matchList.stream().parallel()
+                .forEachOrdered((matchId) -> {
+                    try {
+                        MatchInfoDTO info = bas.requestMatchInfoRaw(matchId);
+                        dto_List.add(info);
+                    }catch (Exception e) {throw new RiotAPIException("컨트롤러: requestMatchInfoRaw 중 오류발생.");}
+                });
+        return ResponseEntity.status(HttpStatus.OK).body(APIDataResponse.of(dto_List));
+    }
     @GetMapping("/request/MatchV5/matches/전적검색")
     public ResponseEntity<APIDataResponse<List<Detail_MatchInfoDTO>>> requestMatchInfo(
 //            @PathVariable String matchid,
@@ -52,7 +69,7 @@ public class BasicAPIController {
         matchList.stream().parallel()
                         .forEachOrdered( matchId -> {
                                try{
-                                   Detail_MatchInfoDTO dto_detail = bas.requestMatchInfo(matchId, subString);
+                                   Detail_MatchInfoDTO dto_detail = bas.requestMatchInfo(matchId, puuid,subString);
                                    dto_List.add(dto_detail);
                                }
                                catch(Exception e){

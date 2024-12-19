@@ -37,7 +37,7 @@ public class BasicAPIService {
     private HttpResponse<String> response;
 
     @Value("${api_key}") private String api_key;
-    @Value("${my_puuid}") private String my_puuid;
+//    @Value("${my_puuid}") private String my_puuid;
 
     @Transactional
     public AccountDto.Response findUserAccount(@Valid AccountDto.Request dto) throws Exception {
@@ -68,8 +68,26 @@ public class BasicAPIService {
             throw new RiotAPIException("유효하지 않은 API_KEY", ErrorCode.API_ACCESS_ERROR);
         }
     }
+    public MatchInfoDTO requestMatchInfoRaw(String matchid) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        sb.append("https://asia.api.riotgames.com/lol/match/v5/matches/")
+                .append(matchid);
 
-    public Detail_MatchInfoDTO requestMatchInfo(String matchid, String requestRuneDataString) throws Exception {
+        request = HttpRequest.newBuilder()
+                .uri(URI.create(sb.toString()))
+                .header("X-Riot-Token", api_key)
+                .GET()
+                .build();
+//        sleep(1500);
+        response = httpClient.send(
+                request,
+                HttpResponse.BodyHandlers.ofString());
+
+        System.err.println("Service: "+ response);
+        MatchInfoDTO matchInfoDTO = MatchInfoDTO.of(response.body());
+        return matchInfoDTO;
+    }
+    public Detail_MatchInfoDTO requestMatchInfo(String matchid, String my_puuid, String requestRuneDataString) throws Exception {
         StringBuilder sb = new StringBuilder();
         sb.append("https://asia.api.riotgames.com/lol/match/v5/matches/")
                 .append(matchid);

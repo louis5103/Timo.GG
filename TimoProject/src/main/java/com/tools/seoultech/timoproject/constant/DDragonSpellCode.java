@@ -14,6 +14,7 @@ public enum DDragonSpellCode {
     SummonerFlash("SummonerFlash", 4, "점멸"),
     SummonerHaste("SummonerHaste", 6, "유체화"),
     SummonerHeal("SummonerHeal", 7, "힐"),
+    SummonerTeleport("SummonerTeleport", 12, "텔레포트"),
     SummonerMana("SummonerMana", 13, "총명"),
     SummonerPoroRecall("SummonerPoroRecall", 30, "포로소환"),
     SummonerPoroThrow("SummonerPoroThrow", 31, "포로던지기"),

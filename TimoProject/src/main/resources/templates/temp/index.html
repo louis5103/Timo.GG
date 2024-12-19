@@ -7,11 +7,12 @@
     <!-- End of headStart -->
     <meta name="viewport" content="width=1440">
     <meta name="generator" content="Framer ff86393">
-    <title>Timo.GG</title>
+    <title>My Framer Site</title>
     <meta name="description" content="Made with Framer">
     <meta name="framer-search-index" content="https://framerusercontent.com/sites/2xFe5qU2lZeOfkW0EbLxkD/searchIndex-pzNEzdhzVtgf.json">
-    <link rel="icon" href="../static/favicons/apple-icon.png"/>
-    <link rel="apple-touch-icon" href="../static/favicons/apple-icon.png"/>
+    <link href="https://framerusercontent.com/sites/icons/default-favicon-light.v1.png" rel="icon" media="(prefers-color-scheme: light)">
+    <link href="https://framerusercontent.com/sites/icons/default-favicon-dark.v1.png" rel="icon" media="(prefers-color-scheme: dark)">
+    <link rel="apple-touch-icon" href="https://framerusercontent.com/sites/icons/default-touch-icon.v3.png">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="My Framer Site">
@@ -26,16 +27,6 @@
     <meta name="robots" content="max-image-preview:large">
     <link rel="canonical" href="https://independent-aims-218843.framer.app/">
     <meta property="og:url" content="https://independent-aims-218843.framer.app/">
-    <script>
-        Object.defineProperty(document, 'title', {
-            set: function() {
-                console.log('Title modification is blocked.');
-            },
-            get: function() {
-                return document.querySelector('title').innerText;
-            }
-        });
-    </script>
     <link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/2xFe5qU2lZeOfkW0EbLxkD/chunk-DEHZU65H.mjs">
     <link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/2xFe5qU2lZeOfkW0EbLxkD/chunk-JR5VT52U.mjs">
     <link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/2xFe5qU2lZeOfkW0EbLxkD/chunk-RIUMFBNJ.mjs">
@@ -56,7 +47,6 @@
             -moz-osx-font-smoothing: grayscale
         }
 
-
         * {
             box-sizing: border-box;
             -webkit-font-smoothing: inherit
@@ -69,6 +59,21 @@
         body,input,textarea,select,button {
             font-size: 12px;
             font-family: sans-serif
+        }
+
+        #__framer-badge-container {
+            position: fixed;
+            bottom: 0;
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: right;
+            pointer-events: none;
+            z-index: 314159
+        }
+
+        .__framer-badge {
+            pointer-events: auto
         }
 
         @font-face {
@@ -6094,28 +6099,6 @@
             pointer-events: none
         }
     </style>
-    <style>
-        .search input::placeholder {
-            text-align: center;
-        }
-        .search input {
-            font-family: 'Noto Sans KR', sans-serif;
-            font-size: 20px;
-            color: rgba(48, 48, 57, 0.64);
-            padding: 10px;
-            border: none;
-            outline: none;
-            text-align: left;
-            height: 46px;
-            width: 765px;
-        }
-        button {
-            padding: 10px;
-            cursor: default;
-            margin-left: 10px;
-            opacity: 0;
-        }
-    </style>
     <!-- Start of headEnd -->
     <!-- End of headEnd -->
 </head>
@@ -6131,16 +6114,16 @@
                 <div class="framer-1x2r7ev" data-framer-name="메뉴바" name="메뉴바">
                     <div class="framer-1u72tqf" data-framer-name="메뉴 전체영역" name="메뉴 전체영역">
                         <div class="framer-182l6pv" data-framer-name="로고 + 상세 메뉴" name="로고 + 상세 메뉴">
-                            <div data-framer-component-type="SVG" data-framer-name="로고" name="로고" style="cursor : pointer; image-rendering:pixelated;flex-shrink:0;fill:rgba(0,0,0,1);color:rgba(0,0,0,1)" class="framer-12fc9fy" aria-hidden="true" onclick="location.href='http://localhost:8080/';">
-                                <div class="svgContainer"  style="width:100%;height:100%;aspect-ratio:inherit">
+                            <div data-framer-component-type="SVG" data-framer-name="로고" name="로고" style="image-rendering:pixelated;flex-shrink:0;fill:rgba(0,0,0,1);color:rgba(0,0,0,1)" class="framer-12fc9fy" aria-hidden="true">
+                                <div class="svgContainer" style="width:100%;height:100%;aspect-ratio:inherit">
                                     <svg style="width:100%;height:100%" viewBox="0 0 105 28">
                                         <use href="#svg-299944085_4594"/>
                                     </svg>
                                 </div>
                             </div>
                             <div class="framer-h93vb3" data-framer-name="상세메뉴" name="상세메뉴">
-                                <div class="framer-1pr9pw8" data-framer-name="홈" style=" outline:none;display:flex;flex-direction:column;justify-content:center;flex-shrink:0;transform:none" data-framer-component-type="RichTextContainer">
-                                    <p style="cursor : pointer; --font-selector:R0Y7Tm90byBTYW5zIEtSLTcwMA==;--framer-font-family:&quot;Noto Sans KR&quot;, &quot;Noto Sans KR Placeholder&quot;, sans-serif;--framer-font-size:15px;--framer-font-weight:700;--framer-line-height:22px;--framer-text-color:rgb(255, 255, 255)" class="framer-text" onclick="location.href='http://localhost:8080/';">홈</p>
+                                <div class="framer-1pr9pw8" data-framer-name="홈" style="outline:none;display:flex;flex-direction:column;justify-content:center;flex-shrink:0;transform:none" data-framer-component-type="RichTextContainer">
+                                    <p style="--font-selector:R0Y7Tm90byBTYW5zIEtSLTcwMA==;--framer-font-family:&quot;Noto Sans KR&quot;, &quot;Noto Sans KR Placeholder&quot;, sans-serif;--framer-font-size:15px;--framer-font-weight:700;--framer-line-height:22px;--framer-text-color:rgb(255, 255, 255)" class="framer-text">홈</p>
                                 </div>
                                 <div class="framer-3q7tli" data-framer-name="챔피언 분석" style="outline:none;display:flex;flex-direction:column;justify-content:center;flex-shrink:0;transform:none" data-framer-component-type="RichTextContainer">
                                     <p style="--font-selector:R0Y7Tm90byBTYW5zIEtSLXJlZ3VsYXI=;--framer-font-family:&quot;Noto Sans KR&quot;, &quot;Noto Sans KR Placeholder&quot;, sans-serif;--framer-font-size:15px;--framer-line-height:22px;--framer-text-color:rgb(221, 221, 221)" class="framer-text">챔피언 분석</p>
@@ -6152,7 +6135,7 @@
                                     <p style="--font-selector:R0Y7Tm90byBTYW5zIEtSLXJlZ3VsYXI=;--framer-font-family:&quot;Noto Sans KR&quot;, &quot;Noto Sans KR Placeholder&quot;, sans-serif;--framer-font-size:15px;--framer-line-height:22px;--framer-text-color:rgb(221, 221, 221)" class="framer-text">파티찾기</p>
                                 </div>
                                 <div class="framer-1x0pfco" data-framer-name="커뮤니티" style="outline:none;display:flex;flex-direction:column;justify-content:center;flex-shrink:0;transform:none" data-framer-component-type="RichTextContainer">
-                                    <p style="cursor : pointer; --font-selector:R0Y7Tm90byBTYW5zIEtSLXJlZ3VsYXI=;--framer-font-family:&quot;Noto Sans KR&quot;, &quot;Noto Sans KR Placeholder&quot;, sans-serif;--framer-font-size:15px;--framer-line-height:22px;--framer-text-color:rgb(221, 221, 221)" class="framer-text" onclick="location.href='http://localhost:8080/posts';">커뮤니티</p>
+                                    <p style="--font-selector:R0Y7Tm90byBTYW5zIEtSLXJlZ3VsYXI=;--framer-font-family:&quot;Noto Sans KR&quot;, &quot;Noto Sans KR Placeholder&quot;, sans-serif;--framer-font-size:15px;--framer-line-height:22px;--framer-text-color:rgb(221, 221, 221)" class="framer-text">커뮤니티</p>
                                 </div>
                             </div>
                         </div>
@@ -6169,7 +6152,7 @@
                             </div>
                         </div>
                     </div>
-
+                    <div class="framer-1erwoi5" data-border="true" data-framer-name="수평선" name="수평선"></div>
                 </div>
                 <div class="framer-1fd14n0" data-framer-name="Frame 966" name="Frame 966">
                     <div class="framer-2lumf1" data-framer-name="Frame 960" name="Frame 960">
@@ -6195,22 +6178,11 @@
                                         </div>
                                         <div class="framer-9723fy" data-border="true" data-framer-name="바로가기" name="바로가기" style="transform:rotate(45deg)"></div>
                                     </div>
-                                    <!--검색-->
-                                    <form class="search" onsubmit="search(event)" method="get">
-                                        <input type="text" id="input" placeholder="플레이어 이름 + #태그">
-                                    </form>
-                                    <button onclick="search()"></button>
-                                    <script>
-                                            function search(event) {
-                                            event.preventDefault(); // 폼 제출 기본 동작 방지
-                                            const input = document.getElementById('input').value;
-                                            const [name, tag] = input.split('#');
-                                            const url = `http://localhost:8080/전적검색?gameName=${encodeURIComponent(name)}&tagLine=${encodeURIComponent(tag)}`;
-                                            window.location.href = url;
-                                        }
-                                    </script>
-
-                                    <!--검색-->
+                                    <div class="framer-79ce6e" data-framer-name="Frame 954" name="Frame 954">
+                                        <div class="framer-141ld4c" data-framer-name="플레이어 이름 + #KR1로 검색" style="outline:none;display:flex;flex-direction:column;justify-content:center;flex-shrink:0;transform:none" data-framer-component-type="RichTextContainer">
+                                            <p style="--font-selector:R0Y7Tm90byBTYW5zIEtSLXJlZ3VsYXI=;--framer-font-family:&quot;Noto Sans KR&quot;, &quot;Noto Sans KR Placeholder&quot;, sans-serif;--framer-font-size:20px;--framer-line-height:16px;--framer-text-color:rgba(48, 48, 57, 0.64)" class="framer-text">플레이어 이름  + #KR1로 검색</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -6284,11 +6256,91 @@
     <div class="framer-21T8E" id="overlay"></div>
     <!--/$-->
 </div>
-
-
-
-
-
+<!-- <script>
+    ( () => {
+            function u() {
+                function n(t, e, i) {
+                    let r = document.createElement("a");
+                    r.href = t,
+                        r.target = i,
+                        r.rel = e,
+                        document.body.appendChild(r),
+                        r.click(),
+                        r.remove()
+                }
+                function o(t) {
+                    if (this.dataset.hydrated) {
+                        this.removeEventListener("click", o);
+                        return
+                    }
+                    t.preventDefault(),
+                        t.stopPropagation();
+                    let e = this.getAttribute("href");
+                    if (!e)
+                        return;
+                    if (/Mac|iPod|iPhone|iPad/u.test(navigator.userAgent) ? t.metaKey : t.ctrlKey)
+                        return n(e, "", "_blank");
+                    let r = this.getAttribute("rel") ?? ""
+                        , c = this.getAttribute("target") ?? "";
+                    n(e, r, c)
+                }
+                function a(t) {
+                    if (this.dataset.hydrated) {
+                        this.removeEventListener("auxclick", o);
+                        return
+                    }
+                    t.preventDefault(),
+                        t.stopPropagation();
+                    let e = this.getAttribute("href");
+                    e && n(e, "", "_blank")
+                }
+                function s(t) {
+                    if (this.dataset.hydrated) {
+                        this.removeEventListener("keydown", s);
+                        return
+                    }
+                    if (t.key !== "Enter")
+                        return;
+                    t.preventDefault(),
+                        t.stopPropagation();
+                    let e = this.getAttribute("href");
+                    if (!e)
+                        return;
+                    let i = this.getAttribute("rel") ?? ""
+                        , r = this.getAttribute("target") ?? "";
+                    n(e, i, r)
+                }
+                document.querySelectorAll("[data-nested-link]").forEach(t => {
+                        t instanceof HTMLElement && (t.addEventListener("click", o),
+                            t.addEventListener("auxclick", a),
+                            t.addEventListener("keydown", s))
+                    }
+                )
+            }
+            return u
+        }
+    )()()
+</script>
+<script>
+    ( () => {
+            function i() {
+                for (let e of document.querySelectorAll("[data-framer-original-sizes]")) {
+                    let t = e.getAttribute("data-framer-original-sizes");
+                    t === "" ? e.removeAttribute("sizes") : e.setAttribute("sizes", t),
+                        e.removeAttribute("data-framer-original-sizes")
+                }
+            }
+            function a() {
+                window.__framer_onRewriteBreakpoints = i
+            }
+            return a
+        }
+    )()()
+</script>
+-->
+<div id="__framer-badge-container"></div>
+<!--<script data-framer-appear-animation="no-preference"></script>-->
+<!--<script type="module" async data-framer-bundle="main" fetchpriority="low" src="https://framerusercontent.com/sites/2xFe5qU2lZeOfkW0EbLxkD/script_main.MY3KN4H5.mjs"></script>-->
 <div id="svg-templates" style="position: absolute; overflow: hidden; bottom: 0; left: 0; width: 0; height: 0; z-index: 0; contain: strict" aria-hidden="true">
     <svg width="105" height="28" viewBox="0 0 105 28" fill="none" id="svg-299944085_4594">
         <g clip-path="url(#svg-299944085_4594_clip0_787_2268)">
