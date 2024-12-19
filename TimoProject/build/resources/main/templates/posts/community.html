@@ -8,8 +8,10 @@
     <!-- End of headStart -->
     <meta name="viewport" content="width=1440">
 <!--    <meta name="generator" content="Framer c56cc2c">-->
-    <title>My Framer Site</title>
+    <title>게시글 조회</title>
     <meta name="description" content="Made with Framer">
+    <link rel="icon" href="../static/favicons/apple-icon.png"/>
+    <link rel="apple-touch-icon" href="../static/favicons/apple-icon.png"/>
 <!--    <meta name="framer-search-index" content="https://framerusercontent.com/sites/2xFe5qU2lZeOfkW0EbLxkD/searchIndex-ne4hzpsgg6U5.json">-->
 <!--    <link href="https://framerusercontent.com/sites/icons/default-favicon-light.v1.png" rel="icon" media="(prefers-color-scheme: light)">-->
 <!--    <link href="https://framerusercontent.com/sites/icons/default-favicon-dark.v1.png" rel="icon" media="(prefers-color-scheme: dark)">-->
@@ -36,6 +38,16 @@
     <link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/2xFe5qU2lZeOfkW0EbLxkD/chunk-3KAHCSIV.mjs">
     <link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/2xFe5qU2lZeOfkW0EbLxkD/chunk-42U43NKG.mjs">
     <link rel="modulepreload" fetchpriority="low" href="https://framerusercontent.com/sites/2xFe5qU2lZeOfkW0EbLxkD/script_main.VWHZCVES.mjs">
+    <script>
+        Object.defineProperty(document, 'title', {
+            set: function() {
+                console.log('Title modification is blocked.');
+            },
+            get: function() {
+                return document.querySelector('title').innerText;
+            }
+        });
+    </script>
     <style data-framer-css-ssr-minified data-framer-components="framer-bSFsp">
         html,body,#main {
             margin: 0;
@@ -6535,7 +6547,7 @@
                 <div class="framer-1k1t4p7" data-framer-name="전체 프레임" name="전체 프레임">
                     <div class="framer-1db2u34" data-framer-name="메뉴 전체영역" name="메뉴 전체영역">
                         <div class="framer-h8de6j" data-framer-name="로고 + 상세 메뉴" name="로고 + 상세 메뉴">
-                            <div data-framer-component-type="SVG" data-framer-name="로고" name="로고" style="image-rendering:pixelated;flex-shrink:0;fill:rgba(0,0,0,1);color:rgba(0,0,0,1)" class="framer-cubwh6" aria-hidden="true">
+                            <div data-framer-component-type="SVG" data-framer-name="로고" name="로고" style="cursor : pointer; image-rendering:pixelated;flex-shrink:0;fill:rgba(0,0,0,1);color:rgba(0,0,0,1)" onclick="location.href='http://localhost:8080/';" class="framer-cubwh6" aria-hidden="true">
                                 <div class="svgContainer" style="width:100%;height:100%;aspect-ratio:inherit">
                                     <svg style="width:100%;height:100%" viewBox="0 0 105 28">
                                         <use href="#svg-208405461_4594"/>
@@ -6545,7 +6557,7 @@
                             <div class="framer-u3bimy" data-framer-name="상세메뉴" name="상세메뉴">
                                 <div data-framer-name="홈" style="position:relative; height:23px; width: 15px; outline:none;display:flex;flex-direction:column;justify-content:center;flex-shrink:0;transform:none" data-framer-component-type="RichTextContainer">
                                     <p style="height:23px; width: 15px; --framer-font-size:15px;--framer-line-height:22px" class="framer-text">
-                                        <span style="--font-selector:R0Y7Tm90byBTYW5zIEtSLXJlZ3VsYXI=;--framer-font-family:&quot;Noto Sans KR&quot;;--framer-font-size:15px;--framer-text-color:rgba(255, 255, 255, 1)" class="framer-text">홈</span>
+                                        <span style="cursor : pointer;--font-selector:R0Y7Tm90byBTYW5zIEtSLXJlZ3VsYXI=;--framer-font-family:&quot;Noto Sans KR&quot;;--framer-font-size:15px;--framer-text-color:rgba(255, 255, 255, 1)" class="framer-text" onclick="location.href='http://localhost:8080/';">홈</span>
                                     </p>
                                 </div>
                                 <div data-framer-name="챔피언 분석" style="position:relative; height:23px; width: 73px; outline:none;display:flex;flex-direction:column;justify-content:center;flex-shrink:0;transform:none" data-framer-component-type="RichTextContainer">

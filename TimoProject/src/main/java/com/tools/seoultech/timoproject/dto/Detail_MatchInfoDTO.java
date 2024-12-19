@@ -44,6 +44,7 @@ public class Detail_MatchInfoDTO {
     private final String rune4; // TODO: "
 
     private final List<String> items; // TODO: 0번 아이템 비즈니스 로직
+    private final Boolean surren;
 
     private final Integer totalMinionskilled;
     private final String minionskilledPerMin;
@@ -137,6 +138,7 @@ public class Detail_MatchInfoDTO {
                 .totalMinionskilled(myInfo.getTotalMinionsKilled())
                 .minionskilledPerMin(csPerMin)
                 .participants(participants)
+                .surren(myInfo.getGameEndedInEarlySurrender())
                 .build();
         return var;
     }

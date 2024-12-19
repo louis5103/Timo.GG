@@ -11,7 +11,7 @@ public enum DDragonModeIdCode {
     Bot_Biginner(880, "Summoner's Rift", "초급 봇"),
     Bot_Intermmediate(890, "Summoner's Rift", "중급 봇"),
     Normal_SummonersRift(490, "Summoner's Rift", "일반"),
-    SoloRank_SummonersRift(410, "Summoner's Rift", "단일 랭크"),
+    SodoDuoRank_SummonerRift(420, "Summoner's Rift", "단일/듀오 랭크"),
     DuoRank_SummonersRift(440, "Summoner's Rift", "자유랭크 게임"),
     HowlingAbyss(450, "Howling Abyss", "무직위 총력전"),
     Other(-1, "Other Mode", "기타 모드")

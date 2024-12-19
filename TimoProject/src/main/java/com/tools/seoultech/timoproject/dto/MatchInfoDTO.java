@@ -56,6 +56,7 @@ public class MatchInfoDTO {
 //            @JsonDeserialize(using=MatchInfoDeserializer.class)
             private final List<Integer> Runes;
 
+        private final Boolean gameEndedInEarlySurrender;
         private final Integer teamId;
         private final Boolean win;
 
@@ -84,7 +85,8 @@ public class MatchInfoDTO {
                 @JsonProperty("doubleKills") Integer doubleKillB,
                 @JsonProperty("tripleKills") Integer tripleKillB,
                 @JsonProperty("quadraKills") Integer quadraKillB,
-                @JsonProperty("pentaKills") Integer pentaKills
+                @JsonProperty("pentaKills") Integer pentaKills,
+                @JsonProperty("gameEndedInEarlySurrender") Boolean surrender
         ) {
 
             this.puuid = puuid;
@@ -115,7 +117,7 @@ public class MatchInfoDTO {
             Integer mainRune = node.read("$.styles[0].selections[0].perk");
             Integer subRune = node.read("$.styles[1].style");
             this.Runes = List.of(mainRune, subRune);
-
+            this.gameEndedInEarlySurrender = surrender;
             this.teamId = teamId;
             this.win = win;
         }
@@ -138,7 +140,7 @@ public class MatchInfoDTO {
                 node.read("$.info.participants.*['puuid',  'riotIdGameName', 'riotIdTagline', 'championName'," +
                         " 'kills', 'deaths', 'assists', 'totalMinionsKilled', 'summoner1Id', 'summoner2Id', " +
                         "'item0', 'item1', 'item2', 'item3', 'item4', 'item5', 'item6', " +
-                        "'doubleKills', 'tripleKills','quadraKills', 'pentaKills','perks', 'teamId', 'win']", typeRef)
+                        "'doubleKills', 'tripleKills','quadraKills', 'pentaKills','perks', 'gameEndedInEarlySurrender','teamId', 'win']", typeRef)
         );
         return testDTO;
     }
